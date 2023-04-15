@@ -1,6 +1,5 @@
-import { User, PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { User } from '@prisma/client'
+import prisma from '../prismaClient'
 
 // A post request should not contain an id.
 export type UserCreationParams = Pick<User, 'name' | 'email' | 'rfidCard'>

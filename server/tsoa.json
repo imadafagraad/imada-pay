@@ -3,10 +3,19 @@
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/**/*Endpoint.ts"],
   "spec": {
+    "basePath": "api/v1",
     "outputDirectory": "generated",
-    "specVersion": 3
+    "specVersion": 3,
+    "securityDefinitions": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
   },
   "routes": {
-    "routesDir": "generated"
+    "routesDir": "generated",
+    "authenticationModule": "./src/authentication.ts"
   }
 }
