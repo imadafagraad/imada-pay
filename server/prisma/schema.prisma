@@ -11,18 +11,9 @@ datasource db {
 }
 
 model User {
-  id       Int           @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   name     String
-  email    String        @unique
-  rfidCard String        @unique
+  email    String @unique
+  rfidCard String @unique
   password String
-  tokens   AccessToken[]
-}
-
-model AccessToken {
-  id     Int      @id @default(autoincrement())
-  token  String   @unique
-  user   User     @relation(fields: [userId], references: [id])
-  expire DateTime
-  userId Int
 }
