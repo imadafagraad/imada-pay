@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body } from '@nestjs/common'
+import { Controller, Get } from '@nestjs/common'
 import { AppService } from './app.service'
-import { UserService } from '../user.service'
-import { User } from '@prisma/client'
+import { UserService } from '../user/user.service'
 
 @Controller()
 export class AppController {
@@ -13,18 +12,5 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello()
-  }
-
-  @Post('user')
-  async signupUser(
-    @Body()
-    userData: {
-      name: string
-      email: string
-      rfidCard: string
-      password: string
-    }
-  ): Promise<User> {
-    return this.userService.createUser(userData)
   }
 }
