@@ -30,4 +30,21 @@ export class CreateUserDto {
    */
   @IsNotEmpty()
   password: string
+
+  constructor({
+    name,
+    email,
+    rfidCard,
+    password,
+  }: {
+    name: string
+    email: string
+    rfidCard: string
+    password: string
+  }) {
+    this.name = name
+    this.email = email
+    this.rfidCard = rfidCard
+    this.password = password
+  }
 }

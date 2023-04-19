@@ -22,6 +22,6 @@ export class DatabaseIndicator extends HealthIndicator {
       throw new HealthCheckError('Dogcheck failed', result)
     }
 
-    return this.getStatus(this.KEY, true, null)
+    return this.getStatus(this.KEY, true, undefined)
   }
 }

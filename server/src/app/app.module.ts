@@ -1,11 +1,11 @@
 import { Module, Global } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { UserService } from '../user/user.service'
 import { PrismaService } from '../prisma.service'
 import { ThrottlerModule } from '@nestjs/throttler'
-import { HealthModule } from 'src/health/health.module'
-import { UserController } from 'src/user/user.controller'
+import { HealthModule } from '../health/health.module'
+import { UserModule } from '../user/user.module'
+import { AuthModule } from '../auth/auth.module'
 
 @Global()
 @Module({
@@ -15,9 +15,11 @@ import { UserController } from 'src/user/user.controller'
       limit: 10,
     }),
     HealthModule,
+    UserModule,
+    AuthModule,
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService, PrismaService],
+  controllers: [AppController],
+  providers: [AppService, PrismaService],
   exports: [PrismaService],
 })
 export class AppModule {}

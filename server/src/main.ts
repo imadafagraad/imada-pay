@@ -8,7 +8,7 @@ import { PrismaClientExceptionFilter } from './prisma-client-exception/prisma-cl
 
 dotenv.config()
 
-const PORT = process.env.PORT || 3000
+const PORT = Number.parseInt(process.env['PORT'] || '3000')
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -28,7 +28,7 @@ async function bootstrap() {
       'https://imadafagraad.dk',
       'kontakt@imadafagraad.dk'
     )
-    .setVersion(process.env.npm_package_version)
+    .setVersion(process.env['npm_package_version'] ?? 'UNVERSIONED')
     .build()
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, document)
